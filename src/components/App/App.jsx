@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
+import GuestList from '../GuestList/GuestList'
+import DinnerSupplies from '../DinnerSupplies/DinnerSupplies'
 import './App.css';
 
 function App() {
@@ -51,11 +55,12 @@ function App() {
   }
 
   console.log(newGuestMeal)
+
   return (
     <div className="App">
-      <header>
-        <h1>Prim Proper Props</h1>
-      </header>
+
+      <Header/>
+
       <h2>Party Leader</h2>
       {guestList[0] && <h3>{guestList[0].name}</h3>}
       <h2>Add a new guest</h2>
@@ -100,37 +105,11 @@ function App() {
         </div>
         <button type="submit">Add Guest</button>
       </form>
-      <h2>Guest List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Kid's Meal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {guestList.map(guest => (
-            <tr key={guest.id}>
-              <td>{guest.name}</td>
-              <td>{String(guest.kidsMeal)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h2>Dinner Supplies</h2>
-      <div>
-        Spoons: {guestList.length * 2}
-      </div>
-      <div>
-        Forks: {guestList.length * 2}
-      </div>
-      <div>
-        Knives: {guestList.length * 2}
-      </div>
-      <footer>
-        <h3>Have fun!</h3>
-        <p>Don't forget to mind your Ps and Qs!</p>
-      </footer>
+
+      <GuestList guestList={guestList}/>
+      <DinnerSupplies guestList={guestList}/>
+      <Footer/>
+
     </div>
   );
 }
