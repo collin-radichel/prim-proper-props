@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import GuestList from '../GuestList/GuestList'
-import DinnerSupplies from '../DinnerSupplies/DinnerSupplies'
-import GuestForm from '../GuestForm/GuestForm'
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import GuestList from '../GuestList/GuestList';
+import DinnerSupplies from '../DinnerSupplies/DinnerSupplies';
+import GuestForm from '../GuestForm/GuestForm';
+import PartyLeader from '../PartyLeader/PartyLeader'
 import './App.css';
 
 function App() {
@@ -62,8 +63,9 @@ function App() {
 
       <Header/>
 
-      <h2>Party Leader</h2>
-      {guestList[0] && <h3>{guestList[0].name}</h3>}
+      <PartyLeader
+      leader={guestList[0]}
+      />
       <h2>Add a new guest</h2>
       
       <GuestForm
